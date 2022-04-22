@@ -25,7 +25,7 @@ class Instruction {
 		int regA;
 		int regB;
 		int regC;
-		unsigned char* data;
+		char* data;
 		int num; // address, offset, immediate
 		int port;
 };

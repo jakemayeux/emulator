@@ -11,18 +11,18 @@ using namespace std;
 //
 RAM::RAM(int s) {
 	this->size = s;
-	this->data = (unsigned char*) malloc(sizeof(unsigned char) * size);
+	this->data = (char*) malloc(sizeof(char) * size);
 }
 
-unsigned char RAM::read(int address) {
+char RAM::read(int address) {
 	return this->data[address];
 }
 
-void RAM::write(int address, unsigned char c) {
+void RAM::write(int address, char c) {
 	this->data[address] = c;
 }
 
-void RAM::initialize(int address, unsigned char* string) {
+void RAM::initialize(int address, char* string) {
 	memcpy(data + address, string, strlen((char*)string));
 }
 
@@ -30,7 +30,7 @@ void RAM::initialize(int address, unsigned char* string) {
 //
 // ROM
 //
-void ROM::write(int address, unsigned char data) {
+void ROM::write(int address, char data) {
 	return;
 }
 
@@ -43,7 +43,7 @@ void MMU::attach(IMemory *mem, int address) {
 	modules[address] = mem;
 }
 
-unsigned char MMU::read(int address) {
+char MMU::read(int address) {
 	auto result = findModule(address);
 
 	int localAddress = get<0>(result);
@@ -52,7 +52,7 @@ unsigned char MMU::read(int address) {
 	return module->read(localAddress);
 }
 
-void MMU::write(int address, unsigned char c) {
+void MMU::write(int address, char c) {
 	auto result = findModule(address);
 
 	int localAddress = get<0>(result);
@@ -61,7 +61,7 @@ void MMU::write(int address, unsigned char c) {
 	return module->write(localAddress, c);
 }
 
-void MMU::initialize(int address, unsigned char* string) {
+void MMU::initialize(int address, char* string) {
 	auto result = findModule(address);
 
 	int localAddress = get<0>(result);

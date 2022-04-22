@@ -23,7 +23,7 @@ int main() {
 	mmu.attach(&rom, 0);
 	mmu.attach(&ram, 1000);
 
-	mmu.initialize(10, to_array("hello world\n"));
+	mmu.initialize(10, "hello world\n");
 
 	Console console;
 

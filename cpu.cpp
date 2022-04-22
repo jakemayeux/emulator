@@ -27,7 +27,7 @@ void CPU::run(vector<Instruction> instructions) {
 void outstr(IMemory *mem, Console *console, int address) {
 	int i = address;
 	while(true) {
-		unsigned char c = mem->read(i++);
+		char c = mem->read(i++);
 		if (c == 0) {
 			break;
 		}
@@ -54,7 +54,7 @@ void CPU::eval(Instruction instr, int *iptr) {
 			registers[instr.regA] = mem->read(instr.num);
 			break;
 		case STORE:
-			mem->write(instr.num, (unsigned char)registers[instr.regA]);
+			mem->write(instr.num, (char)registers[instr.regA]);
 			break;
 		case INB:
 			registers[instr.regA] = io[instr.port].read();
