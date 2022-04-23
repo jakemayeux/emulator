@@ -26,9 +26,7 @@ class RAM: public IMemory {
 class ROM: public RAM {
 	public:
 		using RAM::RAM;
-		//ROM(int);
 		void write(int, char);
-		//char read(int);
 	private:
 		int size;
 		char* data;

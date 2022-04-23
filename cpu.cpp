@@ -44,10 +44,6 @@ void outnum(int regA, Console *console) {
 	for (auto &c : str) {
 		console->write(c);
 	}
-	//console->write('\n');
-	//printf("start sleep...\n");
-	//this_thread::sleep_for(chrono::milliseconds(10));
-	//printf("awake!\n");
 }
 
 void CPU::eval(Instruction *instr, int *iptr) {
@@ -72,8 +68,6 @@ void CPU::eval(Instruction *instr, int *iptr) {
 			break;
 		case OUTNUM:
 			outnum(registers[instr->regA], &io[instr->port]);
-			//printf("OUTNUMMING");
-			//this_thread::sleep_for(chrono::seconds(1));
 			break;
 		case OUTSTR:
 			outstr(mem, &io[instr->port], instr->num);
