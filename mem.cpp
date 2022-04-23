@@ -23,7 +23,7 @@ void RAM::write(int address, char c) {
 }
 
 void RAM::initialize(int address, char* string) {
-	memcpy(data + address, string, strlen((char*)string));
+	memcpy(data + address, string, strlen(string));
 }
 
 
@@ -39,7 +39,6 @@ void ROM::write(int address, char data) {
 // MMU
 //
 void MMU::attach(IMemory *mem, int address) {
-	printf("attach to %d\n", address);
 	modules[address] = mem;
 }
 

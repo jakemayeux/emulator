@@ -16,7 +16,14 @@ enum OpCode {
 	JZ,
 	JNZ,
 	JREG,
-	HALT
+	HALT,
+	MOV,
+	PUSH,
+	POP,
+	JSR,
+	RETURN,
+	RSTORE,
+	RLOAD
 };
 
 class Instruction {

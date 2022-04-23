@@ -1,0 +1,84 @@
+
+data 1000 Enter a number 0 to 9
+data 1050 Result: 
+data 1100 Input from RAM: 
+data 1150 Result from RAM: 
+
+// prompt
+outstr 1000 0
+
+// newline
+loadimm 6 10
+outb 6 0
+
+// store number in reg 0
+inb 0 0
+
+// convert to number
+loadimm 1 48
+sub 0 0 1 // input - 48 = number
+
+// store input in RAM at address 0
+store 0 0
+
+// reg0 = input number
+// reg1 = 1
+// reg2 = fn-2
+// reg3 = fn-1
+// reg4 = fn
+
+loadimm 1 1
+
+// if input = 0, set fn=0 & jump to end
+loadimm 4 0
+jz 0 12
+
+// if input = 1, set fn=1 & jump to end
+loadimm 4 1
+sub 3 0 1
+jz 3 9
+
+// input is our iterator here
+sub 0 0 1
+
+// fn-1 = 1
+loadimm 3 1
+
+// fn-2 = 0
+loadimm 2 0
+
+// r4 = r3   + r2
+// fn = fn-1 + fn-2
+add 4 3 2
+
+// fn-2 = fn-1
+mov 2 3
+// fn-1 = fn
+mov 3 4
+
+// check if we need to end loop
+// tmp = input - 1
+sub 0 0 1
+jnz 0 -4
+
+// store result in RAM
+store 4 1
+
+// print result
+outstr 1050 0
+outnum 4 0
+outb 6 0
+
+// print "Input from RAM:"
+outstr 1100 0
+
+// load input from RAM at address 0
+load 0 0
+outnum 0 0
+outb 6 0
+
+// print "Result from RAM:"
+outstr 1150 0
+load 0 1
+outnum 0 0
+outb 6 0

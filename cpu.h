@@ -14,8 +14,8 @@ class CPU {
 	public:
 		CPU(IMemory*);
 		void attach(Console *console, int);
-		void run(vector<Instruction>);
-		void eval(Instruction, int*);
+		void run(vector<Instruction*>);
+		void eval(Instruction*, int*);
 	private:
 		int registers[8];
 		IMemory *mem;

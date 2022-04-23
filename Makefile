@@ -6,8 +6,8 @@ HDRS := $(wildcard *.h)
 $(EXEC): $(OBJS)
 	g++ -g -o $(EXEC) $(OBJS)
 
-%.o: %.c $(HDRS)
-	g++ -c -g -o $@ $<
+%.o: %.cpp $(HDRS)
+	g++ -g -c -o $@ $<
 
 clean:
 	rm -rf *.o $(EXEC) main.out

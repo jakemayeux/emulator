@@ -5,6 +5,6 @@
 
 #include "instruction.h"
 
-vector<Instruction> parse(string filename);
+vector<Instruction*> parse(string filename);
 
 #endif

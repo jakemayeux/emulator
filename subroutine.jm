@@ -1,0 +1,62 @@
+data 1000 Subroutine example
+data 1100 Doing stack things...
+data 1200 Subroutine call
+data 1300 Enter your name terminated with a "!" 
+data 1400 Hello 
+
+// print "Subroutine example\n"
+outstr 1000 0
+loadimm 6 10
+outb 6 0
+
+jsr 18
+
+// print "Stack things...\n"
+outstr 1100 0
+loadimm 6 10
+outb 6 0
+
+loadimm 0 1
+push 0
+loadimm 0 2
+push 0
+loadimm 0 3
+push 0
+
+pop 1
+outnum 1 0
+pop 1
+outnum 1 0
+pop 1
+outnum 1 0
+outb 6 0
+
+halt
+
+// begin subroutine
+outstr 1200 0
+outb 6 0
+
+outstr 1300 0
+
+loadimm 0 0 // iterator
+loadimm 1 100 // base for ram
+loadimm 6 1 // increment
+loadimm 5 33 // to check for !
+
+inb 2 0
+
+add 3 0 1
+rstore 2 3
+
+sub 4 2 5
+add 0 0 6
+jnz 4 -5
+
+outstr 1400 0
+outstr 100 0
+loadimm 6 10
+outb 6 0
+
+return
+
