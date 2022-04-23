@@ -8,7 +8,7 @@ $ ./main subroutine.jm
 $ make clean && make
 ```
 
-### Extras
+## Extras
 - Stack
 - Subroutines
 - More instructions
