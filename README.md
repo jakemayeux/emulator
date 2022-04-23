@@ -1,5 +1,6 @@
 ## Example usage
 ```
+$ ./main fib.jm
 $ ./main subroutine.jm
 ```
 
