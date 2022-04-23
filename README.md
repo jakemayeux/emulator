@@ -10,6 +10,7 @@ $ make clean && make
 ```
 
 ## Extras
+- Assembly-like parser
 - Stack
 - Subroutines
 - More instructions
